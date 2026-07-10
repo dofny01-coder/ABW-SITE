@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABW SITE — Build</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .guide-wrap{max-width:820px;margin:0 auto;padding:70px 32px 100px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:13px;font-weight:600;margin-bottom:28px;}
+  .back-link svg{width:14px;height:14px;fill:var(--gold);transform:rotate(180deg);}
+  .guide-wrap h1{font-size:30px;color:#fff;margin-bottom:8px;}
+  .guide-meta{color:var(--text-muted);font-size:13px;margin-bottom:30px;}
+
+  .info-block{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--gold);border-radius:6px;padding:20px 24px;margin-bottom:34px;}
+  .info-block p{font-size:14px;color:var(--text);margin-bottom:6px;}
+  .info-block p:last-child{margin-bottom:0;}
+
+  .tabs{display:flex;gap:10px;margin-bottom:26px;}
+  .tab-btn{flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-family:'Cinzel',serif;font-weight:700;letter-spacing:0.08em;font-size:13px;padding:12px;border-radius:6px;cursor:pointer;transition:all .15s ease;}
+  .tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .tab-btn:hover:not(.active){background:var(--surface-2);color:#fff;}
+
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .rarity-block{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:24px 26px;margin-bottom:20px;}
+  .rarity-title{display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-weight:700;font-size:14px;letter-spacing:0.05em;margin-bottom:14px;}
+  .dot{width:10px;height:10px;border-radius:2px;display:inline-block;}
+  .dot.myth{background:var(--accent);}
+  .dot.leg{background:var(--gold);}
+
+  .perk-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;}
+  .perk-row:last-child{border-bottom:none;}
+  .perk-slot{color:var(--text-muted);min-width:90px;font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:0.03em;padding-top:1px;}
+  .perk-name{color:var(--text);}
+
+  .sub-title{font-size:15px;color:var(--gold);font-family:'Cinzel',serif;font-weight:700;margin:36px 0 14px;letter-spacing:0.03em;}
+
+  .artefact-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;}
+  .artefact-row:last-child{border-bottom:none;}
+
+  .memory-row{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:14px;}
+  .stars{color:var(--gold);letter-spacing:1px;font-size:13px;min-width:76px;}
+</style>
+</head>
+<body>
+
+<div class="guide-wrap">
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6v12z"/></svg>
+    Retour à l'accueil
+  </a>
+
+  <h1>Build ODM &amp; TS</h1>
+  <p class="guide-meta">Par Yūnaé — ABW</p>
+
+  <div class="info-block">
+    <p>Ce guide vous permet, si vous avez Helos, de taper dans les 6M de dégâts.</p>
+    <p>Sinon, avec Ackerman, il vous permet de taper les 3M.</p>
+    <p>Vous pouvez aussi le jouer sans ces familles, mais faites quand même attention à ne pas avoir de famille à -5%.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('odm')" data-tag="odm">ODM</button>
+    <button class="tab-btn" onclick="showTab('ts')" data-tag="ts">TS</button>
+  </div>
+
+  <div id="tab-odm" class="tab-panel active" data-search="odm perk odm build odm founder's blessing heavenly restriction kengo black flash immortal font of inspiration tatsujin perfect soul unparalleled strength peerless focus font of vitality gear master peerless commander">
+    <div class="rarity-block">
+      <div class="rarity-title"><span class="dot myth"></span>Mythique</div>
+      <div class="perk-row"><span class="perk-slot">Core</span><span class="perk-name">Founder's Blessing (awaking bar) ou Heavenly Restriction (pas d'utilisation de skill mais damage boost jusqu'à 30% au max)</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Kengo</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Black Flash — si vous avez Helos ou Ackerman, car il donne les deux dans 1 slot offense</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Immortal</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Font of Inspiration et Tatsujin (Helos)</span></div>
+    </div>
+    <div class="rarity-block">
+      <div class="rarity-title"><span class="dot leg"></span>Légendaire</div>
+      <div class="perk-row"><span class="perk-slot">Core</span><span class="perk-name">Perfect Soul</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Unparalleled Strength</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Peerless Focus</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Font of Vitality</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Gear Master et Peerless Commander (Helos)</span></div>
+    </div>
+  </div>
+
+  <div id="tab-ts" class="tab-panel" data-search="ts perk ts build ts maximum firepower heavenly restriction kengo everlasting flame immortal explosive fortune font of inspiration perfect soul unparalleled strength peerless focus font of vitality munitions master courage catalyst">
+    <div class="rarity-block">
+      <div class="rarity-title"><span class="dot myth"></span>Mythique</div>
+      <div class="perk-row"><span class="perk-slot">Core</span><span class="perk-name">Maximum Firepower ou Heavenly Restriction (pas d'utilisation de skill mais damage boost jusqu'à 30% au max)</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Kengo</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Everlasting Flame</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Immortal</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Explosive Fortune et Font of Inspiration (Helos)</span></div>
+    </div>
+    <div class="rarity-block">
+      <div class="rarity-title"><span class="dot leg"></span>Légendaire</div>
+      <div class="perk-row"><span class="perk-slot">Core</span><span class="perk-name">Perfect Soul</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Unparalleled Strength</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Peerless Focus</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Font of Vitality</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Munitions Master et Courage Catalyst (Helos)</span></div>
+    </div>
+  </div>
+
+  <div class="sub-title">Artefacts</div>
+  <div class="rarity-block" data-search="artefacts feathered bicorn scarf crystal necklace">
+    <div class="artefact-row">Feathered Bicorn — DMG pour les 2 stats</div>
+    <div class="artefact-row">Scarf — DMG pour les 2 stats (je ne vous conseille pas, voir vous interdit de prendre Crystal Necklace)</div>
+    <p style="font-size:13.5px;color:var(--text-muted);margin-top:14px;">Crystal Necklace vous donnera 10% damage + 5% crit, mais vous n'aurez pas assez de vitesse pour Black Flash : il vous faudra donc 2 stats à speed pour l'activer.</p>
+    <p style="font-size:13.5px;color:var(--text-muted);margin-top:8px;">Scarf vous donne 40% de hook speed, ce qui active Black Flash, et vous pouvez vous concentrer sur les dégâts, car 2 stats à 10% ou 12% ça fait 20% ou 24%.</p>
+    <p style="font-size:13.5px;color:var(--gold);margin-top:10px;">Important : c'est mieux que 10%, et il faut chercher une double stat à speed.</p>
+  </div>
+
+  <div class="sub-title">Memories</div>
+  <div class="rarity-block" data-search="memories apotheosis overslash tactician gambler afterimages assassin">
+    <div class="memory-row"><span class="stars">★★★★</span>Apotheosis</div>
+    <div class="memory-row"><span class="stars">★★★★</span>Overslash</div>
+    <div class="memory-row"><span class="stars">★★★</span>Tactician</div>
+    <div class="memory-row"><span class="stars">★★★★★</span>Gambler ou Afterimages (si vous jouez TS)</div>
+    <div class="memory-row"><span class="stars">★★★</span>Assassin <span style="color:var(--text-muted);font-size:12px;">(modifié)</span></div>
+  </div>
+
+</div>
+
+<script>
+function showTab(name){
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelector('.tab-btn[data-tag="' + name + '"]').classList.add('active');
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#tab-','').replace('#','');
+  if(hash === 'ts'){ showTab('ts'); }
+});
+</script>
+
+</body>
+</html>
