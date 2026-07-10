@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABW SITE — Recrutement</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .guide-wrap{max-width:820px;margin:0 auto;padding:70px 32px 100px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:13px;font-weight:600;margin-bottom:28px;}
+  .back-link svg{width:14px;height:14px;fill:var(--gold);transform:rotate(180deg);}
+  .guide-wrap h1{font-size:30px;color:#fff;margin-bottom:8px;}
+  .guide-meta{color:var(--text-muted);font-size:13px;margin-bottom:36px;}
+
+  .info-block{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--gold);border-radius:6px;padding:18px 24px;margin-bottom:34px;}
+  .info-block p{font-size:13.5px;color:var(--text);}
+
+  .form-block{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:26px 28px;margin-bottom:20px;}
+  .form-group{margin-bottom:16px;}
+  .form-group label{display:block;font-size:12px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;}
+  .form-group input, .form-group textarea{
+    width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;
+    padding:11px 14px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;outline:none;
+  }
+  .form-group textarea{resize:vertical;min-height:80px;}
+  .form-group input:focus, .form-group textarea:focus{border-color:var(--gold);}
+
+  .submit-btn{
+    background:var(--accent);color:#fff;border:1px solid rgba(255,255,255,0.08);
+    padding:12px 26px;border-radius:4px;font-weight:600;font-size:14px;cursor:pointer;transition:background 0.15s ease;
+  }
+  .submit-btn:hover{background:var(--accent-hover);}
+  .submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
+
+  .status-msg{font-size:13px;margin-top:12px;padding:10px 14px;border-radius:6px;display:none;}
+  .status-msg.ok{display:block;background:rgba(60,140,80,0.15);color:#7fd99a;border:1px solid rgba(60,140,80,0.3);}
+  .status-msg.err{display:block;background:rgba(179,55,44,0.15);color:#ff9d92;border:1px solid rgba(179,55,44,0.3);}
+</style>
+</head>
+<body>
+
+<div class="guide-wrap">
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6v12z"/></svg>
+    Retour à l'accueil
+  </a>
+
+  <h1>Recrutement</h1>
+  <p class="guide-meta">Postule pour rejoindre l'équipe ou la communauté ABW</p>
+
+  <div class="info-block">
+    <p>Remplis le formulaire ci-dessous. Ta candidature est envoyée directement dans notre salon Discord, où le Chef, le Co-owner et l'équipe Support/Helper l'examineront.</p>
+  </div>
+
+  <div class="form-block">
+    <div class="form-group">
+      <label for="f-pseudo">Ton pseudo Discord</label>
+      <input type="text" id="f-pseudo" placeholder="ex: Yūnaé#0001">
+    </div>
+    <div class="form-group">
+      <label for="f-age">Ton âge</label>
+      <input type="text" id="f-age" placeholder="ex: 17">
+    </div>
+    <div class="form-group">
+      <label for="f-roblox">Pseudo Roblox</label>
+      <input type="text" id="f-roblox" placeholder="ex: ABW_Ilian">
+    </div>
+    <div class="form-group">
+      <label for="f-msg">Pourquoi veux-tu rejoindre ABW ?</label>
+      <textarea id="f-msg" placeholder="Présente-toi en quelques lignes..."></textarea>
+    </div>
+    <button class="submit-btn" id="submit-btn" onclick="submitApplication()">Envoyer ma candidature</button>
+    <div id="status-msg" class="status-msg"></div>
+  </div>
+
+</div>
+
+<script>
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1525261291881496689/bwTxVsh_gRA-iSNwK5xHVOuRUXREIsw_NSyRN87O6Oxehq4xHEKPJ7LZxFNnxGVr_brS';
+
+async function submitApplication(){
+  const pseudo = document.getElementById('f-pseudo').value.trim();
+  const age = document.getElementById('f-age').value.trim();
+  const roblox = document.getElementById('f-roblox').value.trim();
+  const msg = document.getElementById('f-msg').value.trim();
+  const statusEl = document.getElementById('status-msg');
+  const btn = document.getElementById('submit-btn');
+
+  if(!pseudo){
+    statusEl.className = 'status-msg err';
+    statusEl.textContent = "Merci d'indiquer au minimum ton pseudo Discord.";
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+
+  const payload = {
+    embeds: [{
+      title: "📋 Nouvelle candidature — Recrutement ABW",
+      color: 11758124,
+      fields: [
+        { name: "Pseudo Discord", value: pseudo, inline: true },
+        { name: "Âge", value: age || "Non précisé", inline: true },
+        { name: "Pseudo Roblox", value: roblox || "Non précisé", inline: true },
+        { name: "Message", value: msg || "Aucun message fourni" }
+      ],
+      footer: { text: "Formulaire recrutement.html" },
+      timestamp: new Date().toISOString()
+    }]
+  };
+
+  try{
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if(res.ok){
+      statusEl.className = 'status-msg ok';
+      statusEl.textContent = "Candidature envoyée ! Le staff va l'examiner sur Discord.";
+      document.getElementById('f-pseudo').value = '';
+      document.getElementById('f-age').value = '';
+      document.getElementById('f-roblox').value = '';
+      document.getElementById('f-msg').value = '';
+    } else {
+      statusEl.className = 'status-msg err';
+      statusEl.textContent = "Erreur lors de l'envoi. Réessaie dans quelques instants.";
+    }
+  }catch(err){
+    statusEl.className = 'status-msg err';
+    statusEl.textContent = "Erreur réseau. Vérifie ta connexion et réessaie.";
+    console.error(err);
+  }finally{
+    btn.disabled = false;
+    btn.textContent = 'Envoyer ma candidature';
+  }
+}
+</script>
+
+</body>
+</html>

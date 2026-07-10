@@ -52,7 +52,7 @@
     Retour à l'accueil
   </a>
 
-  <h1>Build ODM &amp; TS</h1>
+  <h1>Build</h1>
   <p class="guide-meta">Par Yūnaé — ABW</p>
 
   <div class="info-block">
@@ -64,6 +64,8 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('odm')" data-tag="odm">ODM</button>
     <button class="tab-btn" onclick="showTab('ts')" data-tag="ts">TS</button>
+    <button class="tab-btn" onclick="showTab('colossal')" data-tag="colossal">Titan Colossal</button>
+    <button class="tab-btn" onclick="showTab('feminin')" data-tag="feminin">Titan Féminin</button>
   </div>
 
   <div id="tab-odm" class="tab-panel active" data-search="odm perk odm build odm founder's blessing heavenly restriction kengo black flash immortal font of inspiration tatsujin perfect soul unparalleled strength peerless focus font of vitality gear master peerless commander">
@@ -104,6 +106,77 @@
     </div>
   </div>
 
+  <div id="tab-colossal" class="tab-panel" data-search="titan colossal perk founder's blessing art of war immortal adaptation font of inspiration peerless commander unwavering belief skills chaos titan shifting founder order rising slash hellfire barrage order rage artefacts scars colossal shifter damage scorched cloak crystal necklace memories apotheosis gambler tactician quakestrike furyforge">
+    <div class="rarity-block">
+      <div class="rarity-title" style="color:var(--gold);">Best famille</div>
+      <div class="perk-row"><span class="perk-slot">Famille</span><span class="perk-name">Reiss ou Fritz</span></div>
+    </div>
+
+    <div class="rarity-block">
+      <div class="rarity-title"><span class="dot myth"></span>Perk Mythique</div>
+      <div class="perk-row"><span class="perk-slot">Core</span><span class="perk-name">Founder's Blessing</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Art of War</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Immortal</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Adaptation</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Font of Inspiration</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Peerless Commander ou Unwavering Belief si pas de résonance max</span></div>
+    </div>
+
+    <div class="sub-title">Artefacts</div>
+    <div class="rarity-block">
+      <div class="artefact-row">Scars — Colossal Shifter damage x2</div>
+      <div class="artefact-row">Scorched Cloak ou Crystal Necklace si pas de résonance max</div>
+    </div>
+
+    <div class="sub-title">Memories</div>
+    <div class="rarity-block">
+      <div class="memory-row"><span class="stars">★★★★</span>Apotheosis</div>
+      <div class="memory-row"><span class="stars">★★★★</span>Gambler</div>
+      <div class="memory-row"><span class="stars">★★★</span>Tactician</div>
+      <div class="memory-row"><span class="stars">★★★</span>Quakestrike</div>
+      <div class="memory-row"><span class="stars">★★</span>Furyforge</div>
+    </div>
+  </div>
+
+  <div id="tab-feminin" class="tab-panel" data-search="titan feminin best famille leonhart fritz perk mythique founder's blessing art of war immortal adaptation unwavering belief font of inspiration perk legendaire indefatigable warchief font of vitality peerless constitution peerless commander sixth sense artefacts female scars crystal necklace memories apotheosis gambler tactician quakestrike furyforge modifie">
+    <div class="rarity-block">
+      <div class="rarity-title" style="color:var(--gold);">Best famille</div>
+      <div class="perk-row"><span class="perk-slot">Famille</span><span class="perk-name">Leonhart ou Fritz</span></div>
+    </div>
+
+    <div class="rarity-block">
+      <div class="rarity-title"><span class="dot myth"></span>Perk Mythique</div>
+      <div class="perk-row"><span class="perk-slot">Core</span><span class="perk-name">Founder's Blessing</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Art of War</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Immortal — si vous avez Fritz, vous avez droit à une défense en +, mettez Adaptation</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Unwavering Belief — si vous avez Fritz, vous avez droit à un support en +, mettez Font of Inspiration</span></div>
+    </div>
+
+    <div class="rarity-block">
+      <div class="rarity-title"><span class="dot leg"></span>Perk Légendaire</div>
+      <div class="perk-row"><span class="perk-slot">Core</span><span class="perk-name">Indefatigable</span></div>
+      <div class="perk-row"><span class="perk-slot">Offense</span><span class="perk-name">Warchief</span></div>
+      <div class="perk-row"><span class="perk-slot">Défense</span><span class="perk-name">Font of Vitality — si vous avez Fritz, vous avez droit à une défense en +, mettez Peerless Constitution</span></div>
+      <div class="perk-row"><span class="perk-slot">Support</span><span class="perk-name">Peerless Commander — si vous avez Fritz, vous avez droit à un support en +, mettez Sixth Sense</span></div>
+    </div>
+
+    <div class="sub-title">Artefacts</div>
+    <div class="rarity-block">
+      <div class="artefact-row">Female Scars (dmg shifter)</div>
+      <div class="artefact-row">Crystal Necklace (dmg shifter)</div>
+    </div>
+
+    <div class="sub-title">Memories</div>
+    <div class="rarity-block">
+      <div class="memory-row"><span class="stars">★★★★</span>Apotheosis</div>
+      <div class="memory-row"><span class="stars">★★★★</span>Gambler</div>
+      <div class="memory-row"><span class="stars">★★★</span>Tactician</div>
+      <div class="memory-row"><span class="stars">★★★</span>Quakestrike</div>
+      <div class="memory-row"><span class="stars">★★★</span>Furyforge <span style="color:var(--text-muted);font-size:12px;">(modifié)</span></div>
+    </div>
+  </div>
+
+  <div id="shared-artefacts-memories">
   <div class="sub-title">Artefacts</div>
   <div class="rarity-block" data-search="artefacts feathered bicorn scarf crystal necklace">
     <div class="artefact-row">Feathered Bicorn — DMG pour les 2 stats</div>
@@ -121,6 +194,7 @@
     <div class="memory-row"><span class="stars">★★★★★</span>Gambler ou Afterimages (si vous jouez TS)</div>
     <div class="memory-row"><span class="stars">★★★</span>Assassin <span style="color:var(--text-muted);font-size:12px;"></span></div>
   </div>
+  </div>
 
 </div>
 
@@ -130,10 +204,14 @@ function showTab(name){
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   document.querySelector('.tab-btn[data-tag="' + name + '"]').classList.add('active');
+  const shared = document.getElementById('shared-artefacts-memories');
+  shared.style.display = (name === 'colossal' || name === 'feminin') ? 'none' : '';
 }
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash.replace('#tab-','').replace('#','');
   if(hash === 'ts'){ showTab('ts'); }
+  else if(hash === 'colossal'){ showTab('colossal'); }
+  else if(hash === 'feminin'){ showTab('feminin'); }
 });
 </script>
 

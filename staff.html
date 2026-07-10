@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABW SITE — Staff</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .guide-wrap{max-width:820px;margin:0 auto;padding:70px 32px 100px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:13px;font-weight:600;margin-bottom:28px;}
+  .back-link svg{width:14px;height:14px;fill:var(--gold);transform:rotate(180deg);}
+  .guide-wrap h1{font-size:30px;color:#fff;margin-bottom:8px;}
+  .guide-meta{color:var(--text-muted);font-size:13px;margin-bottom:36px;}
+
+  .rank-title{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--gold);font-family:'Cinzel',serif;font-weight:700;letter-spacing:0.05em;margin:38px 0 14px;}
+  .rank-title:first-of-type{margin-top:0;}
+  .rank-count{font-family:'Inter',sans-serif;font-weight:600;font-size:11.5px;color:var(--text-muted);background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:2px 10px;letter-spacing:0;}
+
+  .staff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .staff-grid.single{grid-template-columns:1fr;}
+  .staff-card{background:var(--surface);padding:18px 20px;display:flex;align-items:center;gap:14px;transition:background 0.15s ease;cursor:pointer;}
+  .staff-card:hover{background:var(--surface-2);}
+  .staff-card:hover .staff-name{color:var(--gold);}
+  .staff-avatar{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:700;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--gold));}
+  .staff-name{font-size:15px;color:#fff;font-weight:600;transition:color 0.15s ease;}
+  .staff-role{font-size:12px;color:var(--gold);margin-top:2px;font-weight:600;}
+  .staff-desc{font-size:12px;color:var(--text-muted);margin-top:3px;line-height:1.4;}
+  .staff-contact{margin-left:auto;flex-shrink:0;opacity:0.5;}
+  .staff-contact svg{width:16px;height:16px;fill:var(--gold);}
+
+  @media (max-width:560px){
+    .staff-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="guide-wrap">
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6v12z"/></svg>
+    Retour à l'accueil
+  </a>
+
+  <h1>Staff</h1>
+  <p class="guide-meta">L'équipe qui fait vivre ABW — clique sur un membre pour le contacter sur Discord</p>
+
+  <div class="rank-title">Chef de ABW <span class="rank-count">1</span></div>
+  <div class="staff-grid single">
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">Oz</div>
+      <div>
+        <div class="staff-name">Oz</div>
+        <div class="staff-role">Chef de ABW</div>
+        <div class="staff-desc">Fondateur du serveur, il supervise l'ensemble de la communauté et prend les décisions finales.</div>
+      </div>
+      <span class="staff-contact"><svg viewBox="0 0 24 24"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.6 12.6 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.099.246.197.373.291a.077.077 0 0 1-.006.128c-.598.35-1.22.645-1.873.892a.076.076 0 0 0-.04.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.662a.06.06 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.211 0 2.176 1.094 2.157 2.418 0 1.334-.955 2.42-2.157 2.42zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.176 1.094 2.157 2.418 0 1.334-.946 2.42-2.157 2.42z"/></svg></span>
+    </a>
+  </div>
+
+  <div class="rank-title">Co-owner <span class="rank-count">1</span></div>
+  <div class="staff-grid single">
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">Y</div>
+      <div>
+        <div class="staff-name">Yūnaé</div>
+        <div class="staff-role">Co-owner</div>
+        <div class="staff-desc">Bras droit du chef, elle gère les guides, les builds et la structure du site.</div>
+      </div>
+      <span class="staff-contact"><svg viewBox="0 0 24 24"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.6 12.6 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.099.246.197.373.291a.077.077 0 0 1-.006.128c-.598.35-1.22.645-1.873.892a.076.076 0 0 0-.04.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.662a.06.06 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.211 0 2.176 1.094 2.157 2.418 0 1.334-.955 2.42-2.157 2.42zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.176 1.094 2.157 2.418 0 1.334-.946 2.42-2.157 2.42z"/></svg></span>
+    </a>
+  </div>
+
+  <div class="rank-title">Support <span class="rank-count">5</span></div>
+  <div class="staff-grid">
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">A</div>
+      <div>
+        <div class="staff-name">!anto愛</div>
+        <div class="staff-role">Support</div>
+        <div class="staff-desc">Répond aux questions générales et oriente les nouveaux membres.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">I</div>
+      <div>
+        <div class="staff-name">ABW_Ilian^^</div>
+        <div class="staff-role">Support</div>
+        <div class="staff-desc">Aide sur les builds et accompagne les joueurs en difficulté.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">R</div>
+      <div>
+        <div class="staff-name">Rayan • LGS</div>
+        <div class="staff-role">Support</div>
+        <div class="staff-desc">Gère les demandes techniques et le suivi des membres actifs.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">L</div>
+      <div>
+        <div class="staff-name">!Lx ✝</div>
+        <div class="staff-role">Support</div>
+        <div class="staff-desc">Assure la modération légère et le soutien quotidien de la communauté.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">C</div>
+      <div>
+        <div class="staff-name">CRO45PM</div>
+        <div class="staff-role">Support</div>
+        <div class="staff-desc">Aide les joueurs sur le gameplay et la progression en jeu.</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="rank-title">Helper <span class="rank-count">5</span></div>
+  <div class="staff-grid">
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">A</div>
+      <div>
+        <div class="staff-name">Alaric</div>
+        <div class="staff-role">Helper</div>
+        <div class="staff-desc">Toujours dispo pour dépanner les nouveaux sur les bases du jeu.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">C</div>
+      <div>
+        <div class="staff-name">Choca</div>
+        <div class="staff-role">Helper</div>
+        <div class="staff-desc">Répond aux petites questions et veille à la bonne ambiance du serveur.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">J</div>
+      <div>
+        <div class="staff-name">jinwooze</div>
+        <div class="staff-role">Helper</div>
+        <div class="staff-desc">Guide les débutants pas à pas dans leurs premiers prestiges.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">M</div>
+      <div>
+        <div class="staff-name">mous.kdz</div>
+        <div class="staff-role">Helper</div>
+        <div class="staff-desc">Donne un coup de main sur les questions de farm et de gems.</div>
+      </div>
+    </a>
+    <a class="staff-card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="staff-avatar">T</div>
+      <div>
+        <div class="staff-name">Tommm_125k</div>
+        <div class="staff-role">Helper</div>
+        <div class="staff-desc">Accueille les nouveaux et répond aux questions du quotidien.</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
