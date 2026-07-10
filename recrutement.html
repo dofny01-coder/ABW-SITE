@@ -63,11 +63,11 @@
     </div>
     <div class="form-group">
       <label for="f-roblox">Pseudo Roblox</label>
-      <input type="text" id="f-roblox" placeholder="ex: ABW_Ilian">
+      <input type="text" id="f-roblox" placeholder="ex: ABW_Ilian" required>
     </div>
     <div class="form-group">
       <label for="f-msg">Pourquoi veux-tu rejoindre ABW ?</label>
-      <textarea id="f-msg" placeholder="Présente-toi en quelques lignes..."></textarea>
+      <textarea id="f-msg" placeholder="Présente-toi en quelques lignes..." required></textarea>
     </div>
     <button class="submit-btn" id="submit-btn" onclick="submitApplication()">Envoyer ma candidature</button>
     <div id="status-msg" class="status-msg"></div>
@@ -77,6 +77,22 @@
 
 <script>
 const WEBHOOK_URL = 'https://discord.com/api/webhooks/1525261291881496689/bwTxVsh_gRA-iSNwK5xHVOuRUXREIsw_NSyRN87O6Oxehq4xHEKPJ7LZxFNnxGVr_brS';
+
+async function checkRobloxUsername(username){
+  try{
+    const res = await fetch('https://users.roblox.com/v1/usernames/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ usernames: [username], excludeBannedUsers: false })
+    });
+    if(!res.ok) return true; // si l'API est indisponible, on ne bloque pas la candidature
+    const data = await res.json();
+    return Array.isArray(data.data) && data.data.length > 0;
+  }catch(err){
+    console.error('Erreur vérification Roblox:', err);
+    return true; // en cas d'erreur réseau, on laisse passer plutôt que de bloquer injustement
+  }
+}
 
 async function submitApplication(){
   const pseudo = document.getElementById('f-pseudo').value.trim();
@@ -89,6 +105,30 @@ async function submitApplication(){
   if(!pseudo){
     statusEl.className = 'status-msg err';
     statusEl.textContent = "Merci d'indiquer au minimum ton pseudo Discord.";
+    return;
+  }
+
+  if(!roblox){
+    statusEl.className = 'status-msg err';
+    statusEl.textContent = "Merci d'indiquer ton pseudo Roblox.";
+    return;
+  }
+
+  if(!msg || msg.length < 15){
+    statusEl.className = 'status-msg err';
+    statusEl.textContent = "Merci d'expliquer en quelques mots pourquoi tu veux rejoindre ABW (15 caractères minimum).";
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Vérification du pseudo Roblox...';
+
+  const robloxExists = await checkRobloxUsername(roblox);
+  if(!robloxExists){
+    statusEl.className = 'status-msg err';
+    statusEl.textContent = "Ce pseudo Roblox n'existe pas. Vérifie l'orthographe exacte.";
+    btn.disabled = false;
+    btn.textContent = 'Envoyer ma candidature';
     return;
   }
 
