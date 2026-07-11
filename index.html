@@ -8,6 +8,140 @@
 </head>
 <body>
 
+<div id="intro-splash">
+  <div class="intro-bg"></div>
+  <div class="intro-overlay"></div>
+  <div class="intro-content">
+    <div class="intro-emblem">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7v6c0 5.25 3.5 9.5 10 11 6.5-1.5 10-5.75 10-11V7l-10-5z"/></svg>
+    </div>
+    <p class="intro-eyebrow">Le régiment</p>
+    <h1 class="intro-title">ABW</h1>
+    <p class="intro-welcome">vous souhaite la bienvenue</p>
+  </div>
+</div>
+
+<style>
+  #intro-splash{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#0a0a0b;
+    overflow:hidden;
+  }
+  #intro-splash.intro-ready{
+    animation: introFadeOut 0.9s ease forwards;
+    animation-delay: 2.6s;
+  }
+  #intro-splash.no-anim{ animation:none; display:none; }
+  .intro-bg{
+    position:absolute;
+    inset:0;
+    background:url('assets/banner.png') center center / cover no-repeat;
+    opacity:0;
+    transform:scale(1.08);
+  }
+  .intro-ready .intro-bg{
+    animation: introBgIn 1.4s ease forwards;
+  }
+  .intro-overlay{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at center, rgba(10,10,11,0.35) 0%, rgba(10,10,11,0.85) 70%, rgba(10,10,11,0.97) 100%);
+  }
+  .intro-content{
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    transform:translateY(14px);
+  }
+  .intro-ready .intro-content{
+    animation: introTextIn 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+  .intro-emblem{
+    width:46px;
+    height:46px;
+    margin-bottom:18px;
+    opacity:0.9;
+  }
+  .intro-emblem svg{width:100%;height:100%;fill:var(--gold);}
+  .intro-eyebrow{
+    font-size:12px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .intro-title{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(48px,9vw,84px);
+    color:#fff;
+    letter-spacing:0.08em;
+    text-shadow:0 4px 30px rgba(0,0,0,0.7);
+    line-height:1;
+    margin-bottom:14px;
+  }
+  .intro-welcome{
+    font-size:14px;
+    color:var(--text-muted);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+
+  @keyframes introBgIn{
+    to{ opacity:1; transform:scale(1); }
+  }
+  @keyframes introTextIn{
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @keyframes introFadeOut{
+    to{ opacity:0; visibility:hidden; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #intro-splash, .intro-bg, .intro-content{ animation:none !important; }
+  }
+</style>
+
+<script>
+(function(){
+  try {
+    const splash = document.getElementById('intro-splash');
+    if (!splash) return;
+
+    // Ne rejoue pas l'intro à chaque navigation interne, seulement à l'arrivée sur le site
+    if (sessionStorage.getItem('abw-intro-seen')) {
+      splash.style.display = 'none';
+      return;
+    }
+    sessionStorage.setItem('abw-intro-seen', '1');
+
+    // Démarre l'animation directement (le fond CSS se charge en parallèle,
+    // et le fondu d'apparition de 1.4s laisse largement le temps de charger)
+    splash.classList.add('intro-ready');
+
+    setTimeout(function(){
+      splash.style.display = 'none';
+    }, 3600);
+  } catch (e) {
+    // En cas d'erreur imprévue, on ne bloque jamais l'accès au site
+    const splash = document.getElementById('intro-splash');
+    if (splash) splash.style.display = 'none';
+  }
+})();
+</script>
+
 <header class="hero">
   <div class="hero-content">
     <span class="eyebrow">Communauté officielle</span>
@@ -29,7 +163,7 @@
 <section class="search-section">
   <div class="search-wrap">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" placeholder="écrire ici" aria-label="Rechercher">
+    <input type="text" id="site-search" placeholder="écrire ici" aria-label="Rechercher">
   </div>
 </section>
 
@@ -40,7 +174,7 @@
 
     <div class="grid">
 
-      <a class="card" href="build.html">
+      <a class="card" href="build.html" data-search="build compositions talents odm ts titan colossal feminin perk">
         <span class="card-index">01</span>
         <h3>Build</h3>
         <p>Compositions et talents recommandés pour optimiser tes builds.</p>
@@ -49,7 +183,7 @@
         </span>
       </a>
 
-      <a class="card" href="guide.html">
+      <a class="card" href="guide.html" data-search="guide débutant prestige quai extérieur aotr">
         <span class="card-index">02</span>
         <h3>Guide</h3>
         <p>Guides débutants et avancés pour progresser efficacement.</p>
@@ -58,7 +192,7 @@
         </span>
       </a>
 
-      <a class="card" href="gameplay.html">
+      <a class="card" href="gameplay.html" data-search="gameplay astuces stratégies raid mission afk prestige gems farm">
         <span class="card-index">03</span>
         <h3>Gameplay</h3>
         <p>Astuces, stratégies et discussions autour du jeu.</p>
@@ -67,7 +201,7 @@
         </span>
       </a>
 
-      <a class="card" href="staff.html">
+      <a class="card" href="staff.html" data-search="staff équipe chef co-owner support helper">
         <span class="card-index">04</span>
         <h3>Staff</h3>
         <p>Notre équipe staff, présente pour répondre à tes questions.</p>
@@ -85,14 +219,12 @@
         </span>
       </a>
 
-      <a class="card" href="https://discord.gg/rMczedwTg" target="_blank" rel="noopener">
+      <div class="card card-disabled" aria-disabled="true">
         <span class="card-index">06</span>
         <h3>Partenariat</h3>
         <p>Demandes de partenariat et collaborations avec d'autres communautés.</p>
-        <span class="card-link">Voir le salon
-          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6v12z"/></svg>
-        </span>
-      </a>
+        <span class="card-link">Indisponible</span>
+      </div>
 
     </div>
   </div>
@@ -101,6 +233,32 @@
 <footer>
   © Communauté — tous les liens redirigent vers le serveur Discord.
 </footer>
+
+<style>
+  .card-disabled{
+    cursor:not-allowed;
+    opacity:0.45;
+    pointer-events:none;
+  }
+  .card-disabled .card-link{color:var(--text-muted);}
+  .card-hidden{display:none !important;}
+</style>
+
+<script>
+(function(){
+  const input = document.getElementById('site-search');
+  const cards = document.querySelectorAll('.card[data-search]');
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    cards.forEach(card => {
+      const haystack = (card.dataset.search + ' ' + card.querySelector('h3').textContent).toLowerCase();
+      const match = q === '' || haystack.includes(q);
+      card.classList.toggle('card-hidden', !match);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
